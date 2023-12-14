@@ -107,3 +107,4 @@ remove = Button(app, text = "Remove Value", command = remove_value)
 remove.pack()
 
 l = []
+app.mainloop()
