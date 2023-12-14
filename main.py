@@ -23,20 +23,45 @@ def get_info():
        except ValueError:
               result_label.config("Invalid input. Enter a number.")
 
-def get_list_values():
-       list_input = simpledialog.askstring("Input", "Enter a value: ")
-       return list_input
+def list_entry():
+       try:
+              n = int(iterations.get())
+              make_list(n)
+       except ValueError:
+              messagebox.showerror("Error, enter a valid number.")
+
+def make_list(n):
+       l = [" "]*n
+       update_listbox(l)
+
+def update_listbox(u_list):
+       listbox.delete(0, END)
+       for i in u_list:
+              listbox.insert(END, i)
+
+def append_value():
+       val = input_entry.get()
+       l.append(val)
+       update_listbox(l)
        
-def get_info2():
-       user_input = E2.get()
-       a = []
-       for i in range(int(user_input)):
-              list_value = get_list_values()
-              if list_value is not None:
-                     a.append(list_value)
-              else:
-                     break
-       result_label2.config(text = "Filled list:" + str(a))  
+def insert_value():
+       index = listbox.curselection()
+       if index :
+               index = index[0]
+               value = input_entry.get()
+               l.insert(index, value)
+               update_listbox(l)
+
+def remove_value():
+       index = listbox.curselection()
+       if index:
+              index = index[0]
+              del l[index]
+              update_listbox(l)
+              
+               
+               
+       
                    
                      
 
@@ -52,23 +77,31 @@ E1.pack(pady = 20)
 result_label = Label(app)
 result_label.pack()
 
-L2 = Label(app, text = "How many numbers do you want a list for? ")
-L2.pack(pady = 20)
+iter_label = Label(app, text = "Number of iterations: ")
+iter_label.pack()
 
-E2 = Entry(app, bd = 5)
-E2.pack(pady = 20)
+iterations = Entry(app, bd = 5)
+iterations.pack()
 
-B2 = Button(app, text = "Enter", command = get_info2)
-B2.pack(pady = 20)
+done = Button(app, text = "Done", command = list_entry)
+done.pack()
 
-result_label2 = Label(app)
-result_label.pack()
+listbox = Listbox(app)
+listbox.pack(pady = 10)
 
+input_label = Label(app, text = "Enter a value: ")
+input_label.pack()
 
+input_entry = Entry(app, bd = 10)
+input_entry.pack()
 
+append = Button(app, text = "Append value", command = append_value)
+append.pack()
 
+insert = Button(app, text = "Insert Value", command = insert_value)
+insert.pack()
 
+remove = Button(app, text = "Remove Value", command = remove_value)
+remove.pack()
 
-app.mainloop()
-
-
+l = []
