@@ -45,6 +45,7 @@ def append_value():
        update_listbox(l)
        
 def insert_value():
+       global l 
        index = listbox.curselection()
        if index :
                index = index[0]
@@ -53,6 +54,7 @@ def insert_value():
                update_listbox(l)
 
 def remove_value():
+       global l
        index = listbox.curselection()
        if index:
               index = index[0]
