@@ -8,10 +8,10 @@ app.configure(bg='#1E1E1E')
 label_color = '#FFFFFF'
 button_color = '#4CAF50'
 entry_color = '#333333'
-font_style = ('Arial', 14, 'bold')  # Increased font size for a more professional look
+font_style = ('Arial', 14, 'bold')  
 user_input_color = 'white'
 
-app.geometry("700x600+300+150")  # Adjusted window size for better layout
+app.geometry("700x600+300+150") 
 
 def get_info():
     user_input = E1.get()
@@ -99,7 +99,7 @@ result_label.pack()
 fibonacci_label = Label(app, text="", bg='#1E1E1E', fg=label_color, font=font_style)
 fibonacci_label.pack()
 
-# Separating list manipulation part with a heading
+
 list_heading = Label(app, text="List Manipulation", bg='#1E1E1E', fg=label_color, font=font_style)
 list_heading.pack(pady=10)
 
